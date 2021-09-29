@@ -1,4 +1,3 @@
-
 from pages.baseApp import BasePage
 
 from selenium.webdriver.common.by import By
@@ -11,6 +10,13 @@ class MailLocators:
     LOCATOR_MAIL_PASSWORD = (By.CSS_SELECTOR, 'input[data-testid="password-input"]')
     LOCATOR_BUTTON_ENTER = (By.CSS_SELECTOR, 'button[data-testid="login-to-mail"]')
     LOCATOR_MESSAGE_ABOUT_WRONG_PASSWORD = (By.CLASS_NAME, 'error.svelte-1tib0qz')
+
+    LOCATOR_BUTTON_NEW_LETTER = (By.CSS_SELECTOR, '[title="Написать письмо"]')
+    LOCATOR_ENTER_EMAIL = (By.CSS_SELECTOR, 'input.container--H9L5q.size_s_compressed--2c-eV')
+    LOCATOR_ENTER_SUBJECT = (By.CSS_SELECTOR, 'input[name="Subject"]')
+    LOCATOR_ENTER_TEXT_OF_LETTER = (By.CSS_SELECTOR, 'div.editable-p2sn.cke_editable.cke_editable_inline.cke_contents_true.cke_show_borders.cke_focus &gt; div')
+    # LOCATOR_CLICK_ON_THE_BUTTON_SEND = (By.CSS_SELECTOR, 'input[data-testid="login-input"]')
+
 
 class LogIn(BasePage):
     def enter_login(self, emailName: str):
@@ -38,36 +44,33 @@ class LogIn(BasePage):
         return self.find_element(MailLocators.LOCATOR_BUTTON_ENTER, time=2).click()
 
     def message_about_wrong_password_login(self):
-        return self.find_element(MailLocators.LOCATOR_MESSAGE_ABOUT_WRONG_PASSWORD)
+        return self.is_element_present(MailLocators.LOCATOR_MESSAGE_ABOUT_WRONG_PASSWORD)
 
+    def checking_move_on_letter_page(self):
+        return self.is_element_present(MailLocators.LOCATOR_BUTTON_NEW_LETTER)
 
 class AddLetter(BasePage):
-    def click_on_the_search_button(self):
-        return self.find_element(MailLocators.BUTTON_SEARCH, time=2).click()
-    #
-    # def enter_word(self, word: str):
-    #     search_field = self.find_element(MailLocators.INPUT_KEY_WORD)
-    #     search_field.click()
-    #     search_field.send_keys(word)
-    #     return search_field
-    #
-    # def click_on_the_search_button_start(self):
-    #     return self.find_element(MailLocators.BUTTON_SEARCH_START, time=2).click()
-    #
-    # def product_found(self):
-    #     self.find_element(MailLocators.PRODUCTS_TITLES)
-    #
-    # def message_product_not_found(self):
-    #     self.find_element(MailLocators.MESSAGE_PRODUCT_NOT_FOUND)
-    #
-    # def enter_price_ot(self, price: int):
-    #     search_field = self.find_element(MailLocators.INPUT_OT)
-    #     search_field.click()
-    #     search_field.send_keys(price)
-    #     return search_field
-    #
-    # def enter_price_do(self, price: int):
-    #     search_field = self.find_element(MailLocators.INPUT_DO)
-    #     search_field.click()
-    #     search_field.send_keys(price)
-    #     return search_field
+
+    # def click_on_the_button_new_letter(self):
+    #     return self.find_element(MailLocators.LOCATOR_BUTTON_NEW_LETTER, time=2).click()
+
+    def enter_email(self, email: str):
+        email_field = self.find_element(MailLocators.LOCATOR_ENTER_EMAIL)
+        email_field.click()
+        email_field.send_keys(email)
+        return email_field
+
+    def enter_subject(self, subject: str):
+        subject_field = self.find_element(MailLocators.LOCATOR_ENTER_SUBJECT)
+        subject_field.click()
+        subject_field.send_keys(subject)
+        return subject_field
+
+    def enter_text_of_letter(self, text: str):
+        text_field = self.find_element(MailLocators.LOCATOR_ENTER_TEXT_OF_LETTER)
+        text_field.click()
+        text_field.send_keys(text)
+        return text
+
+    def click_on_the_button_send(self):
+        return self.find_element(MailLocators.LOCATOR_CLICK_ON_THE_BUTTON_SEND, time=2).click()
