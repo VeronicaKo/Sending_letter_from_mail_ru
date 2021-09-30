@@ -9,7 +9,7 @@ class BasePage:
         self.driver = driver
         self.base_url = "https://mail.ru/"
         self.letter_url = "https://e.mail.ru/compose/"
-        self.driver.implicitly_wait(60)
+        self.driver.implicitly_wait(30)
 
     def find_element(self, locator, time=10):
         return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator),
@@ -25,16 +25,16 @@ class BasePage:
     def go_to_letter_site(self):
         return self.driver.get(self.letter_url)
 
-    def is_element_present(self, how, what):
+    def is_element_present(self, locator):
         try:
-            self.driver.find_element(how, what)
+            self.find_element(locator)
         except NoSuchElementException:
             return False
         return True
 
-    def is_not_element_present(self, how, what, timeout=4):
+    def is_not_element_present(self, locator, timeout=4):
         try:
-            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((how, what)))
+            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located(locator))
         except TimeoutException:
             return True
         return False
