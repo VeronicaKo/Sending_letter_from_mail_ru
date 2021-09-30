@@ -26,12 +26,11 @@ pip install -r requirements.txt
 Аргументы запуска:
 - -s - показывать принты в процессе выполнения
 - -v - verbose режим, чтобы видеть, какие тесты были запущены
-
-#### Запуск тестов
+- команда запуска
 ```bash
 py.test -s -v tests
 ```
-##### Демонстрация
+### Демонстрация
 
 [![Watch the video](for_video.png)](https://youtu.be/4nH_8J2U4PM)
 
