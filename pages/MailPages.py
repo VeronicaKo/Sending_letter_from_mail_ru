@@ -24,28 +24,25 @@ class LogIn(BasePage):
         login_field = self.find_element(MailLocators.LOCATOR_MAIL_LOGIN)
         login_field.click()
         login_field.send_keys(email_name)
-        return login_field
 
     def enter_domain(self, domain_name: str):
         domain_field = self.find_element(MailLocators.LOCATOR_MAIL_DOMAIN)
         domain_field.click()
         domain_field.send_keys(domain_name)
-        return domain_field
 
     def click_on_the_password_button(self):
-        return self.find_element(MailLocators.LOCATOR_BUTTON_INPUT_PASSWORD, time=2).click()
+        self.find_element(MailLocators.LOCATOR_BUTTON_INPUT_PASSWORD, time=2).click()
 
     def enter_password(self, pass_name: str):
         pass_field = self.find_element(MailLocators.LOCATOR_MAIL_PASSWORD)
         pass_field.click()
         pass_field.send_keys(pass_name)
-        return pass_field
 
     def click_on_the_enter_button(self):
-        return self.find_element(MailLocators.LOCATOR_BUTTON_ENTER, time=2).click()
+        self.find_element(MailLocators.LOCATOR_BUTTON_ENTER, time=2).click()
 
     def message_about_wrong_password_login(self):
-        return self.is_element_present(MailLocators.LOCATOR_MESSAGE_ABOUT_WRONG_PASSWORD)
+        self.is_element_present(MailLocators.LOCATOR_MESSAGE_ABOUT_WRONG_PASSWORD)
 
     def checking_move_on_letter_page(self):
         return self.is_element_present(MailLocators.LOCATOR_BUTTON_NEW_LETTER)
@@ -57,22 +54,19 @@ class AddLetter(BasePage):
         email_field = self.find_element(MailLocators.LOCATOR_ENTER_EMAIL)
         email_field.click()
         email_field.send_keys(email)
-        return email_field
 
     def enter_subject(self, subject: str):
         subject_field = self.find_element(MailLocators.LOCATOR_ENTER_SUBJECT)
         subject_field.click()
         subject_field.send_keys(subject)
-        return subject_field
 
     def enter_text_of_letter(self, text: str):
         text_field = self.find_element(MailLocators.LOCATOR_ENTER_TEXT_OF_LETTER)
         text_field.click()
         text_field.send_keys(text)
-        return text
 
     def click_on_the_button_send(self):
-        return self.find_element(MailLocators.LOCATOR_CLICK_ON_THE_BUTTON_SEND, time=2).click()
+        self.find_element(MailLocators.LOCATOR_CLICK_ON_THE_BUTTON_SEND, time=2).click()
 
     def checking_sending_letter(self):
         return self.is_element_present(MailLocators.LOCATOR_BUTTON_NEW_LETTER)
