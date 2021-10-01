@@ -1,4 +1,4 @@
-from pages.baseApp import BasePage
+from pages.base_page import BasePage
 
 from selenium.webdriver.common.by import By
 
@@ -19,7 +19,7 @@ class MailLocators:
     LOCATOR_MESSAGE_ABOUT_SUCCESS_SENDING = (By.CLASS_NAME, "layer__link")
 
 
-class LogIn(BasePage):
+class LogInPage(BasePage):
     def enter_login(self, email_name: str):
         login_field = self.find_element(MailLocators.LOCATOR_MAIL_LOGIN)
         login_field.click()
@@ -48,7 +48,7 @@ class LogIn(BasePage):
         return self.is_element_present(MailLocators.LOCATOR_BUTTON_NEW_LETTER)
 
 
-class AddLetter(BasePage):
+class AddLetterPage(BasePage):
 
     def enter_email(self, email: str):
         email_field = self.find_element(MailLocators.LOCATOR_ENTER_EMAIL)
