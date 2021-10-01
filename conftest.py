@@ -1,5 +1,3 @@
-from time import sleep
-
 import pytest
 from selenium import webdriver
 from pages.MailPages import LogInPage
