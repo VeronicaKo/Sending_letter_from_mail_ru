@@ -4,17 +4,17 @@ import pytest
 from selenium import webdriver
 from pages.MailPages import LogInPage
 import config
+from pages.MailPages import AddLetterPage
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def browser():
     driver = webdriver.Chrome()
     yield driver
-    sleep(10)
     driver.quit()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def login_as_user(browser):
     login_as_user = LogInPage(browser)
     login_as_user.go_to_site()
@@ -24,3 +24,4 @@ def login_as_user(browser):
     login_as_user.enter_password(config.password)
     login_as_user.click_on_the_enter_button()
     assert login_as_user.checking_move_on_letter_page(), 'The login to the email is not completed'
+    return AddLetterPage(browser)
