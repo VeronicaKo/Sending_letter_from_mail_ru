@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from pages.MailPages import LogInPage
 import config
-from pages.MailPages import AddLetterPage
+from pages.LetterPage import AddLetterPage
 
 
 @pytest.fixture(scope="function")
