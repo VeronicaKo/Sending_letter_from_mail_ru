@@ -21,5 +21,4 @@ def login_as_user(browser):
     login_as_user.click_on_the_password_button()
     login_as_user.enter_password(config.password)
     login_as_user.click_on_the_enter_button()
-    assert login_as_user.checking_move_on_letter_page(), 'The login to the email is not completed'
     return AddLetterPage(browser)
