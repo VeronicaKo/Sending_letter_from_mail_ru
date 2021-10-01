@@ -20,10 +20,10 @@ class BasePage:
                                                       message=f"Can't find elements by locator {locator}")
 
     def go_to_site(self):
-        return self.driver.get(self.base_url)
+        self.driver.get(self.base_url)
 
     def go_to_letter_site(self):
-        return self.driver.get(self.letter_url)
+        self.driver.get(self.letter_url)
 
     def is_element_present(self, locator):
         try:
